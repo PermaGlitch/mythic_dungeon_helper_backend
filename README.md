@@ -8,7 +8,7 @@ This serves as a compendium for World of Warcraft's mythic+ seasonal dungeon rot
     - [x] Mobs
     - [ ] Abilities
 
-- [ ] The Dawnbrealer (Hallowfall)
+- [ ] The Dawnbreaker (Hallowfall)
     - [ ] Mobs
     - [ ] Abilities
 
