@@ -4,8 +4,12 @@ This serves as a compendium for World of Warcraft's mythic+ seasonal dungeon rot
 
 ## Implementation checklist:
 
+- [x] Expansion (TWW only, as current expansion)
+
+- [x] Seasons (all seasons currently in TWW - 3 in total)
+
 - [ ] Ara-Kara, City of Echoes (Azj'Kahet)
-    - [x] Mobs
+    - [] Mobs
     - [ ] Abilities
 
 - [ ] The Dawnbreaker (Hallowfall)
