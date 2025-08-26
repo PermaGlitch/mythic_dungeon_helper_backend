@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "node ./dist/server.js",
     "dev": "ts-node-dev src/app.ts",
-    "populatedb": "node ./dist/db/populatedb.js"
+    "populatedb": "node ./dist/seeds/populatedb.js"
   },
   "keywords": [],
   "author": "",
