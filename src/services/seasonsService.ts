@@ -1,3 +1,4 @@
-import db from "../db/pool";
+import { type Season, getSeasonsList as sGetList } from "../models/seasonModel";
 
-export const getSeasonsList = async () => (await db.query(`SELECT * FROM seasons;`)).rows;
+type IGetSeasonsList = (limit?: number, offset?: number) => Promise<Season[]>;
+export const getSeasonsList: IGetSeasonsList = (limit, offset) => sGetList(limit, offset);

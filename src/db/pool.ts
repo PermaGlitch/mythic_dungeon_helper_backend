@@ -8,5 +8,5 @@ const pool = new Pool({
 });
 
 export default {
-    query: (sqlString: string, params?: [any]) => pool.query(sqlString, params),
+    query: (sqlString: string, params?: any[]) => pool.query(sqlString, params),
 };

@@ -1,3 +1,4 @@
-import db from "../db/pool";
+import { type Expansion, getExpansionsList as eGetList } from "../models/expansionModel";
 
-export const getExpansionsList = async () => (await db.query(`SELECT * FROM expansions;`)).rows;
+type IGetExpansionsList = (limit?: number, offset?: number) => Promise<Expansion[]>;
+export const getExpansionsList: IGetExpansionsList = (limit, offset) => eGetList(limit, offset);
