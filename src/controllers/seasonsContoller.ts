@@ -1,5 +1,13 @@
-import db from "../db/pool";
+import { RequestHandler } from "express";
 
-export const getSeasons = async () => await db.query(`
-        SELECT * FROM seasons;
-    `);
+import * as seasonsService from "../services/seasonsService";
+
+export const getSeasonsList: RequestHandler = async (_req, res) => {
+    try {
+        const seasonsList = await seasonsService.getSeasonsList();
+        res.json(seasonsList);
+    } catch (e) {
+        console.log(e);
+        res.status(500).send(e);
+    }
+};
