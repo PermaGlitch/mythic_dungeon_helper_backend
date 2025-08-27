@@ -1,7 +1,8 @@
 import db from "../db/pool";
 
-import { IBaseModel } from "./types";
-import { LIMIT, OFFSET } from "./constants";
+import { IBaseModel } from "./lib/types";
+import { LIMIT, OFFSET } from "./lib/constants";
+import { rowsToCamel } from "./lib/caseTransform";
 
 export interface ISerializedExpansion extends IBaseModel {
     year: number;
@@ -11,20 +12,12 @@ export interface ISerializedExpansion extends IBaseModel {
     description: string;
 }
 
-const deserializeExpansions = (row: ISerializedExpansion) => ({
-    id: row.id,
-    year: row.year,
-    icon: row.icon,
-    title: row.title,
-    background: row.background,
-    description: row.description,
-    created_at: row.created_at,
-    updated_at: row.updated_at,
-});
-
-export type Expansion = ReturnType<typeof deserializeExpansions>;
+export interface Expansion extends Omit<ISerializedExpansion, "created_at" | "updated_at"> {
+    createdAt: ISerializedExpansion["created_at"];
+    updatedAt: ISerializedExpansion["updated_at"];
+}
 
 export const getExpansionsList = async (limit = LIMIT, offset = OFFSET) => {
     const { rows } = await db.query(`SELECT * FROM expansions ORDER BY year DESC LIMIT $1 OFFSET $2;`, [limit, offset]);
-    return rows.map(deserializeExpansions);
+    return rowsToCamel(rows) as unknown as Expansion;
 };
